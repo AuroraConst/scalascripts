@@ -15,7 +15,7 @@ val sort: Option[String] = None
 //   uri"http://localhost:8080/simple")
 
 val requestFormPost = basicRequest
-    .body(Map("title" ->"my main man!", "uri" ->"myuri","company"->"mycompany") )  //formbody
+    .body(Map("title" ->"my main man! or person!", "uri" ->"myuri","company"->"mycompany") )  //formbody
     .post(
       uri"http://localhost:8080/jobs"
     )
