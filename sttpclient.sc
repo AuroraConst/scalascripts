@@ -14,7 +14,7 @@ val sort: Option[String] = None
 // val request = basicRequest.get(
 //   uri"http://localhost:8080/simple")
 
-val request = basicRequest
+val requestFormPost = basicRequest
     .body(Map("title" ->"my main man!", "uri" ->"myuri","company"->"mycompany") )  //formbody
     .post(
       uri"http://localhost:8080/jobs"
@@ -22,7 +22,7 @@ val request = basicRequest
 
 
 val backend = HttpClientSyncBackend()
-val response = request.send(backend)
+val response = requestFormPost.send(backend)
 
 // response.header(...): Option[String]
 println(response.header("Content-Length"))
