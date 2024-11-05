@@ -1,5 +1,3 @@
-//> using dep  com.softwaremill.sttp.client3::zio::3.9.7
-
 import sttp.client3._
 
 
