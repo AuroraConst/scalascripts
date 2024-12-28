@@ -10,5 +10,5 @@ val matches: Iterator[File] = dir.glob("*.jpg") ++ dir.glob("*.htm") ++ dir.glob
 
 
 
-matches.foreach(f => f.moveToDirectory(root /"dev"/"AURORA"))
+matches.foreach(f => f.moveToDirectory(root /"dev"/"AURORA"/"images"))
 
