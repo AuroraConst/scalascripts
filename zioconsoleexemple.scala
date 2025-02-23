@@ -1,4 +1,4 @@
-
+//> using file "project.scala"
 import zio.Console._
 import zio._
 import zio.config.magnolia._
