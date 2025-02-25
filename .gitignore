@@ -1,5 +1,5 @@
 node_modules/
-
+output.txt
 # scala related
 logs
 project/metals.sbt

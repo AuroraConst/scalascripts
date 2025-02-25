@@ -5,5 +5,6 @@
 //> using dep dev.zio::zio-config-refined::4.0.3
 //> using dep com.github.pathikrit::better-files::3.9.2
 //> using dep com.softwaremill.sttp.client3::zio::3.10.3
+//> using dep me.tongfei:progressbar:0.10.1
 //> using resourceDir res
 
