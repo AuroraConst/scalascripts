@@ -56,3 +56,5 @@ object HoconSimple extends ZIOAppDefault :
       _               <- printLine(invalidCustomer)
     } yield ()
 
+
+ HoconSimple.main(args)   

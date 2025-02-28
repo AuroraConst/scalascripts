@@ -5,6 +5,7 @@ logs
 project/metals.sbt
 project/project
 project/target
+exe/
 target
 tmp
 .bsp/
