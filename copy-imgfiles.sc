@@ -1,4 +1,4 @@
-
+//> using file "project.scala"
 import better.files.Dsl.SymbolicOperations
 
 import better.files._
