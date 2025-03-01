@@ -5,5 +5,5 @@ import scala.sys.process._
 
 //remember args are passed like this
 // scala-cli.bat .\filesc -- arg1 arg2
-println(filename)
-val filename = args.mkString(" ")
+val argString = args.mkString(" ")
+println(args.toList)
