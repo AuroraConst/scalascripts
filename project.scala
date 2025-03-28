@@ -7,5 +7,6 @@
 //> using dep com.softwaremill.sttp.client3::zio::3.10.3
 //> using dep me.tongfei:progressbar:0.10.1
 //> using dep com.lihaoyi::pprint::0.9.0
+//> using dep dev.zio::zio-cli::0.7.0
 //> using resourceDir res
 
