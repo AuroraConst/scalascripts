@@ -1,6 +1,8 @@
 //> using file project.scala
 
-
+/**
+  * this is very rough and not completely correct implmementation
+  */
 
 import zio.Console.printLine
 import zio.cli.HelpDoc.Span.text
@@ -27,6 +29,7 @@ object GitExample extends ZIOCliDefault {
   val modifiedFlag: Options[Boolean] = Options.boolean("m")
 
   val addHelp: HelpDoc = HelpDoc.p("Add subcommand description")
+  val removeHelp : HelpDoc = HelpDoc.p("Remove subcommand description")
   val add =
     Command("add", modifiedFlag, Args.directory("directory")).withHelp(addHelp).map { case (modified, directory) =>
       Subcommand.Add(modified, directory)
@@ -49,15 +52,11 @@ object GitExample extends ZIOCliDefault {
 
   val remoteHelp: HelpDoc = HelpDoc.p("Remote subcommand description")
   val remote =
-    // val gitRemote       = Command("remote", verboseFlag).withHelp(remoteHelp).map(Subcommand.Remote(_))
-    // val gitRemoteAdd    = Command("remote").withHelp(remoteHelp).subcommands(remoteAdd)
-    // val gitRemoteRemove = Command("remote").withHelp(remoteHelp).subcommands(remoteRemove)
-    // gitRemote | gitRemoteAdd | gitRemoteRemove
     Command("remote", verboseFlag)
       .withHelp(remoteHelp)
       .map(Subcommand.Remote(_))
       .subcommands(remoteAdd, remoteRemove)
-      .map(_._2) // TODO: We shouldn't have to discard the standalone remote command
+      .map(_._2) 
 
   val git: Command[Subcommand] =
     Command("git", Options.none, Args.none).subcommands(add, remote)
@@ -80,9 +79,7 @@ object GitExample extends ZIOCliDefault {
   }
 }
 
-println(GitExample.git.helpDoc)
-println("hey hey hey")
-
+GitExample.main(args:Array[String]) // This will run the CLI application
 
 
 
