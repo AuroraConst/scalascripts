@@ -23,6 +23,7 @@ object ZIOKeyListener extends ZIOAppDefault {
 
   // Create and add a key listener
   def createKeyListener(runtime: Runtime[Any]): ZIO[Scope, Throwable, NativeKeyListener] = {
+    //acquireRelease is used as an ARM (automatic resource management) which governs accessing and cleaning up resources
     ZIO.acquireRelease(
       // Create and add the listener (acquire)
       ZIO.attempt {
