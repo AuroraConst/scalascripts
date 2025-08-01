@@ -61,21 +61,16 @@ object ZIOKeyListener extends ZIOAppDefault {
 
   // Main ZIO program
   override def run: ZIO[Any, Throwable, Unit] = {
-    ZIO.acquireRelease(
-      // Register global hook at startup
-      registerGlobalHook
-    )(
-      // Unregister global hook at shutdown
-      _ => unregisterGlobalHook
-    ).flatMap { _ =>
+    ZIO.scoped {
       for {
-        _           <- printLine("Starting keyboard listener (Press Enter to exit)...")
-        runtime     <- ZIO.runtime[Any]
-        _           <- createKeyListener(runtime).fork
-        _           <- printLine("Listeners started. Press any key to see output...")
-        _           <- printLine("Press Enter in this console to exit...")
-        _           <- Console.readLine
-        _           <- printLine("Goodbye!")
+        _       <- ZIO.acquireRelease(registerGlobalHook)(_ => unregisterGlobalHook)
+        _       <- printLine("Starting keyboard listener (Press Enter to exit)...")
+        runtime <- ZIO.runtime[Any]
+        _       <- createKeyListener(runtime).fork
+        _       <- printLine("Listeners started. Press any key to see output...")
+        _       <- printLine("Press Enter in this console to exit...")
+        _       <- Console.readLine
+        _       <- printLine("Goodbye!")
       } yield ()
     }.provideLayer(Scope.default)
   }
