@@ -1,4 +1,3 @@
-//> using file "project.scala"
 
 import zio._
 import zio.Console._

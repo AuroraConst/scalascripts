@@ -1,4 +1,3 @@
-//> using file "project.scala"
 
  import zio.*
 
@@ -8,13 +7,13 @@ object Main extends ZIOAppDefault :
       request <- queue.take
         _ <- Console.printLine(s"$request").orDie
         _ <- queue.offer(request)
-    } yield ()).repeat(Schedule.spaced(Duration.fromSeconds(5)))
+    } yield ()).repeat(Schedule.spaced(Duration.fromSeconds(1)))
 
   def run = 
     for {
       _ <- Console.printLine("Say...")
       queue <- Queue.bounded[String](10)
-      _ <- queue.offerAll(List("yo!"))
+      _ <- queue.offerAll(List("yo!","hi"))
       takeAndOfferFiber <- takeAndOffer(queue).fork
       _ <- takeAndOfferFiber.join
     } yield ()
