@@ -1,4 +1,4 @@
-
+//> using file "project.scala"
 import zio.*
 import zio.stream._
 
@@ -13,12 +13,12 @@ object Main extends ZIOAppDefault {
 
   def run = {
 
-    for {
+    // for {
 
-      _ <- program
+      program
 
 
-    } yield ()
+    // } yield ()
   }
 }
 

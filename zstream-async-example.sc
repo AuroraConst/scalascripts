@@ -1,4 +1,4 @@
-
+//> using file "project.scala"
 import zio._
 import zio.stream.ZStream
 
@@ -39,3 +39,6 @@ object ZStreamAsyncExample extends ZIOAppDefault {
       .runDrain
   }
 }
+
+
+ZStreamAsyncExample.main(Array.empty)
