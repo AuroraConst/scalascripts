@@ -10,5 +10,6 @@
 //> using dep com.lihaoyi::pprint::0.9.6
 //> using dep dev.zio::zio-cli::0.8.1
 //> using dep dev.zio::zio-http::3.11.3
+//> using dep com.lihaoyi::os-lib::0.11.9-M8
 //> using resourceDir res
 
