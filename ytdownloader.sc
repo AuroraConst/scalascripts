@@ -17,12 +17,3 @@ def mvmp4 =
         p => os.move(p, os.home / "downloads" /   p.last, replaceExisting = true)
     }
 
-
-def mvmp4f1 = 
-    val src = os.home / "downloads"
-    val result = os.list(src).filter(_.ext == "mp4").foreach{
-        p => os.move(p, os.home / "downloads" / "youtube" / p.last, replaceExisting = true, createFolders = true)
-    }
-    println(result)
-
-mvmp4f1
