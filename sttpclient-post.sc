@@ -2,6 +2,9 @@
 
 import sttp.client3._
 
+/**
+  *use asynchronous HTTP client like ZIO HTTP if your entire application is purely synchronou
+  */
 
 val query = "http language:scala"
 val sort: Option[String] = None
