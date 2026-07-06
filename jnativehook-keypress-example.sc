@@ -1,6 +1,13 @@
 //> using file "project.scala"
 //> using dep com.github.kwhat:jnativehook:2.2.2
 
+/**
+ * @deprecated This example is deprecated for Wayland on Linux. It may not work as expected on Wayland sessions. Consider using alternative methods for global key event listening on Wayland.
+ * 
+ * emerging openjdk project Wakefield
+ * https://www.youtube.com/watch?v=5gfZDx6IOD4
+ * This example demonstrates how to use the JNativeHook library to listen for global key events in a ZIO application.
+*/
 
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.keyboard.{NativeKeyListener,NativeKeyEvent};
