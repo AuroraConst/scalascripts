@@ -7,7 +7,7 @@ data foreach println
 
 
 
-val devdir :os.Path =  os.root / "dev"
+val devdir :os.Path =  os.pwd
 import java.text.NumberFormat
 import java.util.Locale
 // / Format the totalSize with commas
