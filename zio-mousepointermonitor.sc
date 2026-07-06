@@ -11,7 +11,7 @@ def monitorMouseChanges: ZIO[Any, Throwable, Unit] = {
       _          <- previousPos match {
                       case None => 
                         Console.printLine(s"Initial mouse position: (${currentPos.x}, ${currentPos.y})")
-                      case Some(prev) if prev.x != currentPos.x || prev.y != currentPos.y => 
+                      case Some(prev) if  prev !=   currentPos =>  
                         Console.printLine(s"Mouse moved to (${currentPos.x}, ${currentPos.y})")
                       case _ => 
                         ZIO.unit // No change, don't print

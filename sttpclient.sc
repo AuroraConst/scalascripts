@@ -1,3 +1,5 @@
+//> using file project.scala
+
 import sttp.client3._
 
 
