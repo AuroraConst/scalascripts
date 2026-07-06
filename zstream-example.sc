@@ -11,15 +11,9 @@ object Main extends ZIOAppDefault {
     .run(ZSink.foreach(Console.printLine(_))) // 4. Consume and print
 
 
-  def run = {
-
-    // for {
-
-      program
+  def run = program
 
 
-    // } yield ()
-  }
 }
 
 Main.main(args)
