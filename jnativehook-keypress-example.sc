@@ -8,7 +8,7 @@ import com.github.kwhat.jnativehook.keyboard.{NativeKeyListener,NativeKeyEvent};
 import zio._
 import zio.Console._
 
-object ZIOKeyListener extends ZIOAppDefault {
+object ZIOKeyListener extends ZIOAppDefault :
 
   // Register the global native hook
   def registerGlobalHook: ZIO[Any, Throwable, Unit] = 
@@ -21,11 +21,9 @@ object ZIOKeyListener extends ZIOAppDefault {
       GlobalScreen.unregisterNativeHook()
     }.orDie
 
-  // Create and add a key listener
-  def createKeyListener(runtime: Runtime[Any]): ZIO[Scope, Throwable, NativeKeyListener] = {
-    //acquireRelease is used as an ARM (automatic resource management) which governs accessing and cleaning up resources
-    ZIO.acquireRelease(
-      // Create and add the listener (acquire)
+
+  // Create and add the listener (acquire)
+  lazy val ziokeylistener =    // Create and add the listener (acquire)
       ZIO.attempt {
         val listener = new NativeKeyListener {
           override def nativeKeyPressed(e: NativeKeyEvent): Unit = {
@@ -51,12 +49,17 @@ object ZIOKeyListener extends ZIOAppDefault {
         GlobalScreen.addNativeKeyListener(listener)
         listener
       }
-    )(
-      // Remove the listener (release)
-      listener => ZIO.attempt {
-        GlobalScreen.removeNativeKeyListener(listener)
-      }.orDie
-    )
+
+
+  // Create and add a key listener
+  def createKeyListener(runtime: Runtime[Any]): ZIO[Scope, Throwable, NativeKeyListener] = {
+    //acquireRelease is used as an ARM (automatic resource management) which governs accessing and cleaning up resources
+    ZIO.acquireRelease(ziokeylistener) { listener =>
+        // Remove the listener (release)
+        ZIO.attempt {
+          GlobalScreen.removeNativeKeyListener(listener)
+        }.orDie
+    }
   }
 
   // Main ZIO program
@@ -74,7 +77,6 @@ object ZIOKeyListener extends ZIOAppDefault {
       } yield ()
     }.provideLayer(Scope.default)
   }
-}
 
 
 ZIOKeyListener.main(Array.empty)
