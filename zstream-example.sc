@@ -12,8 +12,6 @@ object Main extends ZIOAppDefault {
 
 
   def run = program
-
-
 }
 
 Main.main(args)

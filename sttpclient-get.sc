@@ -12,18 +12,21 @@ case class Todo(userId: Int, id: Int, title: String, completed: Boolean)
 object Todo:
   given JsonCodec[Todo] = DeriveJsonCodec.gen[Todo]
 
-def getrequest(url:String) = basicRequest
+val backend = HttpClientSyncBackend()
+def response(url:String) = basicRequest
     .get(
       uri"$url"
-    )
+    ).send(backend)
 
 
-val backend = HttpClientSyncBackend()
-val response = getrequest("http://jsonplaceholder.typicode.com/todos").send(backend)
+val responseBody = response("http://jsonplaceholder.typicode.com/todos")
+  .body
 
 
-response.body.map { body =>
-  val todos = body.fromJson[List[Todo]]
-  println(todos)
-}
+val result  = responseBody.flatMap(s => s.fromJson[List[Todo]]) match
+  case Left(error) => println(s"Error parsing JSON: $error"); List.empty[Todo]
+  case Right(todo) => todo
+
+
+println(s"$result")
 
