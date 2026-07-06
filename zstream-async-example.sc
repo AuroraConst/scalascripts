@@ -3,13 +3,15 @@ import zio._
 import zio.stream.ZStream
 
 object ZStreamAsyncExample extends ZIOAppDefault {
+  
 
   // A mock callback-based API (e.g., an external event listener)
   // It emits an integer every second and stops after 5 events.
   def registerCallback(onNext: Int => Unit, onComplete: () => Unit): Unit = {
     var count = 0
     val timer = new java.util.Timer()
-    timer.scheduleAtFixedRate(new java.util.TimerTask {
+
+    val timerTask = new java.util.TimerTask {
       def run(): Unit = {
         count += 1
         if (count <= 5) {
@@ -19,7 +21,8 @@ object ZStreamAsyncExample extends ZIOAppDefault {
           timer.cancel()
         }
       }
-    }, 1000, 1000)
+    } 
+    timer.scheduleAtFixedRate(timerTask, 1000, 1000)
   }
 
   // Create an asynchronous ZStream from the callback API
