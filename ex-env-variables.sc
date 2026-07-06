@@ -6,4 +6,5 @@
   val homeDir = sys.env.get("HOME")
   val dev = sys.env.get("DevDirectory")
 
+  println(s"Home directory: $homeDir")
   println( s"dev: $dev")

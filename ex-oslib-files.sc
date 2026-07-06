@@ -1,5 +1,4 @@
 //> using file "project.scala"
-//> using toolkit latest
 println("h  e  l  l  o    w  o  r  l  d")
 val r = os.list(os.pwd)
 case class FSize(fname:String,fsize:Long)

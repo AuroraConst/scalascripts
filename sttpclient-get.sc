@@ -12,14 +12,14 @@ case class Todo(userId: Int, id: Int, title: String, completed: Boolean)
 object Todo:
   given JsonCodec[Todo] = DeriveJsonCodec.gen[Todo]
 
-val getrequest = basicRequest
+def getrequest(url:String) = basicRequest
     .get(
-      uri"http://jsonplaceholder.typicode.com/todos"
+      uri"$url"
     )
 
 
 val backend = HttpClientSyncBackend()
-val response = getrequest.send(backend)
+val response = getrequest("http://jsonplaceholder.typicode.com/todos").send(backend)
 
 
 response.body.map { body =>

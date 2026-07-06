@@ -1,5 +1,4 @@
 //> using file "project.scala"
-//> using toolkit latest
 import os.Path
 import me.tongfei.progressbar.ProgressBar
 println("Compressing dev directory:")

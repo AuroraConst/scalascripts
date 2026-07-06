@@ -6,7 +6,7 @@ import me.tongfei.progressbar.ProgressBar
 println("Analyzing Dev directory for largest files:")
 
 
-val devdir :os.Path =  os.root / "dev"
+val devdir :os.Path =  os.pwd //os.root / "dev"
 
 def filter(p:Path) = 
     os.isFile(p) && 
