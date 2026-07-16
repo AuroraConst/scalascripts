@@ -12,5 +12,6 @@
 //> using dep dev.zio::zio-http::3.11.3
 //> using dep dev.zio::zio-json::0.9.2
 //> using dep com.lihaoyi::os-lib::0.11.9-M8
+//> using dep org.scalafx::scalafx::23.0.1-R34
 //> using resourceDir res
 
